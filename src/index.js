@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+const morgan = require('morgan');
 var dotenv = require('dotenv');
 var app = require('./app');
 
@@ -19,6 +20,7 @@ mongoose
     console.log('Connected to MongoDB');
     app.listen(PORT, function () {
       console.log('Node API app is running on port ' + PORT);
+      app.use(morgan('combined'));
     });
   })
   .catch((error) => {
